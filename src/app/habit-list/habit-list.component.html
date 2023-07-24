@@ -1,0 +1,20 @@
+<form
+  class="flex items-center justify-start gap-4"
+  [formGroup]="habitForm"
+  (ngSubmit)="onSubmit(habitForm.value)">
+  <input
+    type="text"
+    class="rounded-md border border-gray-700/10 px-3 py-4 shadow-lg"
+    placeholder="Add Habit"
+    formControlName="title" />
+  <button
+    type="submit"
+    class="rounded-lg bg-blue-600 px-3 py-4 text-white shadow-lg">
+    Add Habit
+  </button>
+</form>
+
+<ul class="mt-4">
+  <app-habit-item *ngFor="let habit of habits" [habit]="habit">
+  </app-habit-item>
+</ul>

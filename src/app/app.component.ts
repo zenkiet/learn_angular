@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'learn_angular';
+  title = 'Learn Angular form Zero to Hero with Zen';
 }
