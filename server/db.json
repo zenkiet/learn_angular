@@ -1,0 +1,24 @@
+{
+  "users": [
+    { "username": "test", "password": "test"},
+    { "username": "test2", "password": "test2"},
+    { "username": "test3", "password": "test3"}
+  ],
+  "habits": [
+    {
+      "id": 1,
+      "title": "Check in with parents once a week",
+      "count": 4
+    },
+    {
+      "id": 2,
+      "title": "Record 2 videos per day",
+      "count": 3
+    },
+    {
+      "id": 3,
+      "title": "Work on side project 5 hours/week",
+      "count": 2
+    }
+  ]
+}

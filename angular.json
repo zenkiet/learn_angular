@@ -7,7 +7,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "inlineStyle": true
         }
       },
       "root": "",
@@ -17,6 +18,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["@rive-app/canvas"],
             "outputPath": "dist/learn_angular",
             "index": "src/index.html",
             "main": "src/main.ts",
