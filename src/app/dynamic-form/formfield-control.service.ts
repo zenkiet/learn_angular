@@ -6,6 +6,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { FormValidation } from './entities/form-validation';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +26,7 @@ export class FormfieldControlService {
     return new FormGroup(group);
   }
 
-  mapValidator(validators: any): ValidatorFn[] {
+  mapValidator(validators: FormValidation): ValidatorFn[] {
     const validatorFns: ValidatorFn[] = [];
 
     if (validators.required) {
