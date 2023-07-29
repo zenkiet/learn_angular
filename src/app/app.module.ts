@@ -4,17 +4,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
-import { DynamicFormInputComponent } from './dynamic-form-input/dynamic-form-input.component';
 import { TestComponent } from './test/test.component';
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 @NgModule({
-  declarations: [AppComponent, DynamicFormComponent, DynamicFormInputComponent, TestComponent],
+  declarations: [AppComponent, TestComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     HttpClientModule,
+    DynamicFormModule,
   ],
   bootstrap: [AppComponent],
 })

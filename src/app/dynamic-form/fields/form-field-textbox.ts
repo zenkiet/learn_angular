@@ -1,4 +1,4 @@
-import { FormField } from './form-field';
+import { FormField } from '../form-field';
 
 export class FormFieldTextbox extends FormField<string> {
   override controlType = 'textbox';

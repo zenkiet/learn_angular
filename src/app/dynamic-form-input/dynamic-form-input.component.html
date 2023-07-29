@@ -1,5 +1,6 @@
 <form [formGroup]="form">
   <div [ngSwitch]="input.controlType">
+    <!-- TEXTBOX -->
     <div [class]="input.wrapperClass" *ngSwitchCase="'textbox'">
       <label [class]="input.labelClass" [attr.for]="input.key">{{
         input.label
@@ -11,6 +12,7 @@
         [type]="input.key" />
     </div>
 
+    <!-- DROPDOWN -->
     <div *ngSwitchCase="'dropdown'">
       <label [attr.for]="input.key">{{ input.label }}</label>
       <select [formControlName]="input.key" [id]="input.key">
@@ -20,6 +22,7 @@
       </select>
     </div>
 
+    <!-- CHECKBOX -->
     <div *ngSwitchCase="'checkbox'">
       <input
         [formControlName]="input.key"
@@ -28,6 +31,7 @@
       <label [attr.for]="input.key">{{ input.label }}</label>
     </div>
 
+    <!-- RADIO BUTTONS -->
     <div *ngSwitchCase="'radio'">
       <label
         *ngIf="input.label"
@@ -48,21 +52,11 @@
       </div>
     </div>
 
+    <!-- VALIADTION -->
     <div
       class="font-bold text-red-600"
-      *ngIf="
-        form.get(input.key)?.invalid &&
-        (form.get(input.key)?.dirty || form.get(input.key)?.touched)
-      ">
-      {{ form.get(input.key)?.errors | json }}
-      <div *ngIf="form.get(input.key)?.errors">
-        You have to provide a value.
-      </div>
-
-      <!-- <div *ngIf="form.get(input.key)?.errors?.minlength">
-        You have to provide at least
-        {{ form.get(input.key)?.errors?.min }} characters.
-      </div> -->
+      *ngIf="!isValid && (isDirty || isTouched)">
+      <div *ngIf="hasError">{{ errorMessage }}</div>
     </div>
 
     <!-- <div *ngSwitchCase="'date'">

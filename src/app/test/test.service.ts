@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormField } from '../dynamic-form/form-field';
 import { of } from 'rxjs';
-import { FormFieldTextbox } from '../dynamic-form/form-field-textbox';
-import { FormFieldDropDown } from '../dynamic-form/form-field-dropdown';
-import { FormFieldCheckBox } from '../dynamic-form/form-field-checkbox';
-import { FormFieldRadio } from '../dynamic-form/form-field-radio';
+import { FormFieldTextbox } from '../dynamic-form/fields/form-field-textbox';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +10,8 @@ export class TestService {
   getFormFields() {
     const inputs: FormField<string>[] = [
       new FormFieldTextbox({
-        key: 'name',
-        label: 'Name',
+        key: 'username',
+        label: 'Username',
         type: 'text',
         validator: {
           required: true,
