@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div *ngFor="let formField of FormFields">
+    <app-dynamic-form-input [input]="formField" [form]="form">
+    </app-dynamic-form-input>
+  </div>
+
+  <div class="form-group">
+    <button
+      class="rounded-lg bg-indigo-400 px-3 py-4 font-bold text-white shadow-lg"
+      type="submit"
+      [disabled]="form.invalid">
+      Save
+    </button>
+  </div>
+
+  <pre>{{ form.value | json }}</pre>
+
+  <div *ngIf="payLoad">
+    <strong>Saved the following values</strong><br />{{ payLoad }}
+  </div>
+</form>

@@ -1,0 +1,92 @@
+<form [formGroup]="form">
+  <div [ngSwitch]="input.controlType">
+    <div [class]="input.wrapperClass" *ngSwitchCase="'textbox'">
+      <label [class]="input.labelClass" [attr.for]="input.key">{{
+        input.label
+      }}</label>
+      <input
+        [class]="input.innerClass"
+        [formControlName]="input.key"
+        [id]="input.key"
+        [type]="input.key" />
+    </div>
+
+    <div *ngSwitchCase="'dropdown'">
+      <label [attr.for]="input.key">{{ input.label }}</label>
+      <select [formControlName]="input.key" [id]="input.key">
+        <option *ngFor="let opt of input.options" [value]="opt.key">
+          {{ opt.value }}
+        </option>
+      </select>
+    </div>
+
+    <div *ngSwitchCase="'checkbox'">
+      <input
+        [formControlName]="input.key"
+        [id]="input.key"
+        [type]="input.type" />
+      <label [attr.for]="input.key">{{ input.label }}</label>
+    </div>
+
+    <div *ngSwitchCase="'radio'">
+      <label
+        *ngIf="input.label"
+        [class]="input.labelClass"
+        [attr.for]="input.key"
+        >{{ input.label }}</label
+      >
+      <div [class]="input.wrapperClass" *ngFor="let opt of input.options">
+        <input
+          type="radio"
+          [class]="input.innerClass"
+          [formControlName]="input.key"
+          [id]="input.key"
+          [value]="opt.value" />
+        <label [class]="opt.valueClass" [attr.for]="opt.key">
+          {{ opt.value }}
+        </label>
+      </div>
+    </div>
+
+    <div
+      class="font-bold text-red-600"
+      *ngIf="
+        form.get(input.key)?.invalid &&
+        (form.get(input.key)?.dirty || form.get(input.key)?.touched)
+      ">
+      {{ form.get(input.key)?.errors | json }}
+      <div *ngIf="form.get(input.key)?.errors">
+        You have to provide a value.
+      </div>
+
+      <!-- <div *ngIf="form.get(input.key)?.errors?.minlength">
+        You have to provide at least
+        {{ form.get(input.key)?.errors?.min }} characters.
+      </div> -->
+    </div>
+
+    <!-- <div *ngSwitchCase="'date'">
+      <label [attr.for]="input.key">{{ input.label }}</label>
+      <input
+        [formControlName]="input.key"
+        [id]="input.key"
+        [type]="input.type" />
+    </div>
+
+    <div *ngSwitchCase="'textarea'">
+      <label [attr.for]="input.key">{{ input.label }}</label>
+      <textarea
+        [formControlName]="input.key"
+        [id]="input.key"
+        rows="5"></textarea>
+    </div>
+
+    <div *ngSwitchCase="'file'">
+      <label [attr.for]="input.key">{{ input.label }}</label>
+      <input
+        [formControlName]="input.key"
+        [id]="input.key"
+        [type]="input.type" />
+    </div> -->
+  </div>
+</form>
